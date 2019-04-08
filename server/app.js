@@ -5,13 +5,13 @@ const mongoose = require('mongoose')
 
 const app = express()
 
-mongoose.connect('mongodb+srv://ricky:test1234@booksworm-ez0bx.mongodb.net/test?retryWrites=true')
+mongoose.connect('mongodb+srv://ricky:test1234@booksworm-ez0bx.mongodb.net/test?retryWrites=true', {useNewUrlParser: true})
 mongoose.connection.once('open',() => {
   console.log('connected to database')
 })
 
 app.use('/graphql', graphqlHTTP({
-  schema,
+  schema, //graphql schema
   graphiql: true
 }))
 
